@@ -1,0 +1,9 @@
+/*
+Theme Name:  ACM Chapter Theme
+Description: Reusable WordPress theme for any ACM Professional Chapter. Configure your city, state, and social links via Appearance > Customize > ACM Chapter Settings.
+Author:      ACM Chapter Contributors
+Version:     1.0.0
+Text Domain: acm-chapter
+*/
+
+/* All styles are organized in /css/ and enqueued via functions.php */

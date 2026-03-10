@@ -1,0 +1,45 @@
+name: Release Theme ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build clean theme directory
+        run: |
+          VERSION=${GITHUB_REF_NAME}
+          THEME_DIR="/tmp/build/acm-chapter-theme"
+          mkdir -p "$THEME_DIR"
+          rsync -av --exclude='.git' \
+                    --exclude='.github' \
+                    --exclude='*.md' \
+                    --exclude='.gitignore' \
+                    ./ "$THEME_DIR/"
+          cd /tmp/build
+          zip -r "acm-chapter-theme-${VERSION}.zip" acm-chapter-theme/
+          echo "ZIP_PATH=/tmp/build/acm-chapter-theme-${VERSION}.zip" >> $GITHUB_ENV
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_PATH }}
+          body: |
+            ## ACM Chapter Theme ${{ env.VERSION }}
+
+            ### Installation
+
+            1. Download `acm-chapter-theme-${{ env.VERSION }}.zip` below
+            2. In WordPress Admin: **Appearance → Themes → Add New → Upload Theme**
+            3. Upload the ZIP and click **Install Now**, then **Activate**
+            4. Go to **Appearance → Customize → ACM Chapter Settings** to configure your chapter city, state, and social links

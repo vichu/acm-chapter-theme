@@ -1,0 +1,57 @@
+# ── macOS ──────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# ── Windows ────────────────────────────────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ── Editors ────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ── Node / npm (if tooling is added later) ─────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.npm
+.yarn
+
+# ── Environment / secrets ──────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Local ZIP builds ───────────────────────────────────────────────────
+# ZIPs are built by GitHub Actions — don't commit manual builds
+*.zip
+
+# ── WordPress core files (should never be in a theme repo) ─────────────
+wp-config.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+/wp-admin/
+/wp-includes/
+
+# ── PHP composer (if added later) ──────────────────────────────────────
+vendor/
+composer.lock
+
+# ── Logs ───────────────────────────────────────────────────────────────
+*.log
+debug.log
